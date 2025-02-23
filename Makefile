@@ -1,4 +1,4 @@
-FLAGS=-O2 -fopenmp
+FLAGS=-O3 -fopenmp
 
 CC=gcc
 
@@ -9,11 +9,11 @@ EXEC=dna
 all: $(EXEC)
 
 $(EXEC):
-	$(CC) $(FLAGS) dna.c -c -o dna.o
+	$(CC) $(FLAGS) xpto.c -c -o dna.o
 	$(CC) $(FLAGS) dna.o -o $(EXEC)
 
 run:
-	./$(EXEC)
+	OMP_NUM_THREADS=24 ./$(EXEC)
 
 clean:
-	$(RM) dna.o $(EXEC)
+	$(RM) dna.o $(EXEC)	
